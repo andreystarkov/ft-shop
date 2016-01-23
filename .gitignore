@@ -1,0 +1,16 @@
+*.tar
+*.gz
+*.tgz
+sftp-config.json
+config.php
+cpnfig.dist
+admin/config.php
+node_modules/
+image/
+admin/
+system/
+vqmid/
+*.sql
+php.ini
+robots.txt
+*.xml
