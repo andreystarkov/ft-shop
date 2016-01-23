@@ -42,6 +42,37 @@
     <script src="<?php echo $script; ?>" type="text/javascript"></script>
     <?php } ?>
 
+    <style>
+      /* 3rd level menu fixes */
+      .dropdown-menu .third-level {
+        padding-left: 0;
+      }
+      #menu .dropdown-inner .third-level li:nth-child(even){
+        background: rgba(250,246,240,.05);
+      }
+      #menu .dropdown-inner a {
+        font-size:11px;
+        color: rgba(250,246,240,0.9);
+      }
+      #menu .nav>li>a {
+        font-size:13px;
+      }
+      #menu .dropdown-inner .third-level {
+        background: rgba(255,255,255,0.1);
+      }
+      #menu .dropdown-inner .third-level li:nth-child(odd){
+        background: rgba(250,246,240,.02);
+      }
+      #menu .dropdown.open .dropdown-menu {
+        max-height:600px;
+      }
+    </style>
+    <script>
+    jQuery(document).ready(function($) {
+        $('.dropdown-menu .third-level').parent());
+
+    });
+    </script>
   </head>
   <body class="<?php echo $class; ?>">
     <nav id="top">
@@ -108,8 +139,16 @@
             <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
             <ul class="list-unstyled">
               <?php foreach ($children as $child) { ?>
-              <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-              <?php } ?>
+              <?php $theClass = "class=\"is-single\""; if(isset($child['children_lv3']) && count($child['children_lv3'])>0) $theClass = " class=\"has-child\""; ?>
+              <li <?=$theClass?>><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+              <?php if(isset($child['children_lv3']) && count($child['children_lv3'])>0){ ?>
+                      <ul class="third-level">
+                         <?php foreach ($child['children_lv3'] as $child_lv3) { ?>
+                         <li><a href="<?php echo $child_lv3['href']; ?>"><?php echo $child_lv3['name']; ?></a></li>
+                          <?php  } ?>
+                      </ul>
+                    <?php } ?>
+                  <?php } ?>
             </ul>
             <?php } ?>
           </div>
