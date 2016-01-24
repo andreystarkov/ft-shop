@@ -44,6 +44,7 @@
 
     <style>
       /* 3rd level menu fixes */
+
       .dropdown-menu .third-level {
         padding-left: 0;
       }
@@ -66,12 +67,44 @@
       #menu .dropdown.open .dropdown-menu {
         max-height:600px;
       }
+      .category-third {
+        list-style:none;
+        margin:0;
+        padding:0;
+      }
+      .category-third li {
+      }
+      body .list-group a {
+        border: 1px solid #ddd;
+        color: #000;
+        opacity: 1;
+        font-size: 11px;
+        padding: 6px 15px 6px 15px;
+        transition: all .4s cubic-bezier(0,.47,.46,.76);
+      }
+      body .category-third li a {
+        border: 1px solid #ddd;
+        color: #000;
+        opacity: .85;
+        background: rgba(236, 233, 227, 1);
+        display:block;
+        padding: 6px 15px 6px 25px;
+        transition: all .4s cubic-bezier(0,.47,.46,.76);
+      }
     </style>
     <script>
-    jQuery(document).ready(function($) {
-        $('.dropdown-menu .third-level').parent());
-
-    });
+    /* yep, it's extremely ugly */
+      $(document).ready(function() {
+        $('.category-item').each(function(){
+            var wtf = $(this).attr('data-id');
+            if($('.'+wtf).length > 0) {
+              var omg = $('.'+wtf).html();
+              console.log('wtf = '+wtf);
+              console.log('omg = '+omg);
+              $(this).after('<ul class="category-third">'+omg+'</ul>');
+            }
+        });
+      });
     </script>
   </head>
   <body class="<?php echo $class; ?>">
@@ -142,7 +175,7 @@
               <?php $theClass = "class=\"is-single\""; if(isset($child['children_lv3']) && count($child['children_lv3'])>0) $theClass = " class=\"has-child\""; ?>
               <li <?=$theClass?>><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
               <?php if(isset($child['children_lv3']) && count($child['children_lv3'])>0){ ?>
-                      <ul class="third-level">
+                      <ul class="third-level <?=md5($child['href'])?>">
                          <?php foreach ($child['children_lv3'] as $child_lv3) { ?>
                          <li><a href="<?php echo $child_lv3['href']; ?>"><?php echo $child_lv3['name']; ?></a></li>
                           <?php  } ?>
