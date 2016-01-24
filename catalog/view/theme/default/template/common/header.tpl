@@ -176,9 +176,14 @@
               <li <?=$theClass?>><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
               <?php if(isset($child['children_lv3']) && count($child['children_lv3'])>0){ ?>
                       <ul class="third-level <?=md5($child['href'])?>">
-                         <?php foreach ($child['children_lv3'] as $child_lv3) { ?>
+                         <?php
+                         $parent_id = $child['the_id'];
+                         foreach ($child['children_lv3'] as $child_lv3) { ?>
+                         <? if( $parent_id == $child_lv3['parent_id']) { ?>
                          <li><a href="<?php echo $child_lv3['href']; ?>"><?php echo $child_lv3['name']; ?></a></li>
-                          <?php  } ?>
+                          <?php
+                            }
+                          } ?>
                       </ul>
                     <?php } ?>
                   <?php } ?>
