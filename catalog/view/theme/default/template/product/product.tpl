@@ -341,9 +341,9 @@
         <?php } elseif ($column_left || $column_right) { ?>
         <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
         <?php } else { ?>
-        <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
+        <?php $class = 'col-lg-2 col-md-3 col-sm-6 col-xs-12'; ?>
         <?php } ?>
-        <div class="<?php echo $class; ?>">
+        <div class="the-recommend product-layout product-list <?php echo $class; ?>">
           <div class="product-thumb transition">
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="caption">
@@ -363,7 +363,7 @@
               <?php if ($product['price']) { ?>
               <p class="price">
                 <?php if (!$product['special']) { ?>
-                <?php echo $product['price']; ?>
+                <?php echo round($product['price']); ?> <span class="rouble">i</span>
                 <?php } else { ?>
                 <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
                 <?php } ?>
@@ -374,10 +374,7 @@
               <?php } ?>
             </div>
             <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-            </div>
+              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>         </div>
           </div>
         </div>
         <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>

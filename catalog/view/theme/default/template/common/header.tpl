@@ -95,8 +95,8 @@
     <script>
     /* yep, it's extremely ugly */
       $(document).ready(function() {
-        $('.product-thumb').each(function(){
-          $(this).parent().attr('class', 'product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12')
+        $('.the-recommend .product-layout').each(function(){
+          $(this).parent().attr('class', 'product-layout product-grid col-lg-2 col-md-4 col-sm-6 col-xs-12');
         });
 
         $('.category-item').each(function(){
