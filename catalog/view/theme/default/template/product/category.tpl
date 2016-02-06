@@ -113,9 +113,9 @@
                 <?php if ($product['price']) { ?>
                 <p class="price">
                   <?php if (!$product['special']) { ?>
-                  <?php echo $product['price']; ?>
+                  <span class="the-price"><?php echo round($product['price']) ; ?><span class="rouble">i</span></span>
                   <?php } else { ?>
-                  <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                  <span class="price-new"><?php echo round($product['special']); ?></span> <span class="price-old"><?php echo round($product['price']); ?> <i class="rouble">e</i></span>
                   <?php } ?>
                   <?php if ($product['tax']) { ?>
                   <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>

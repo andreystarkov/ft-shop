@@ -26,7 +26,7 @@
 
     <link href="/assets/fonts/robotodraft/robotodraft.css" rel="stylesheet">
     <link href="/assets/styles/queries.css" rel="stylesheet">
-
+    <link href="/assets/fonts/rouble.css" rel="stylesheet">
    <link href="/dist/styles/styles.css" rel="stylesheet">
    <!--  <link rel="stylesheet/less" type="text/css" href="/assets/styles/styles.less" />
     <script src="/assets/libs/less/dist/less.min.js" type="text/javascript"></script> -->
@@ -95,6 +95,10 @@
     <script>
     /* yep, it's extremely ugly */
       $(document).ready(function() {
+        $('.product-thumb').each(function(){
+          $(this).parent().attr('class', 'product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12')
+        });
+
         $('.category-item').each(function(){
             var wtf = $(this).attr('data-id');
             if($('.'+wtf).length > 0) {

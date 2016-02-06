@@ -18,6 +18,18 @@
 @colorGreen:#3E885B;
 @colorDark:darken(desaturate(@colorBlack,5%), 8%);
 @colorRed:#BB342F;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,500,500italic,700,700italic&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Rubik:400,300,500,700&subset=latin,cyrillic);
+.the-price {
+    font-size:22px;
+    color:#000;
+    .rouble {
+        display:inline-block;
+        margin-left:3px;
+        font-size:20px;
+    }
+}
 
 .navbar-bar {
     margin:7.5px 3px;
@@ -27,6 +39,10 @@
 @navBackground:@colorBlack;
 
 @defaultFunction: cubic-bezier(.07,.8,.87,.71);
+
+#product h3 {
+    display:none;
+}
 
 .sort-section {
     margin-top: 15px;
@@ -43,7 +59,7 @@
 
 body {
     color: #353135;
-    font-family: RobotoDraft, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -57,13 +73,13 @@ h1, h2, h3, h4, h5, h6  {
     font-size: 14px;
 }
 h1 {
-    font-size: 33px;
+    font-size: 24px;
 }
 h2 {
-    font-size: 27px;
+    font-size: 20px;
 }
 h3 {
-    font-size: 21px;
+    font-size: 18px;
 }
 h4 {
     font-size: 15px;
@@ -113,6 +129,26 @@ div.required {
             content: '* ';
             font-weight: bold;
         }
+    }
+}
+
+#tab-description * {
+    color: #000 !important;
+    font-style: normal !important;
+}
+.the-product-title {
+    margin-top:30px;
+    margin-bottom:20px;
+    display:block;
+    font-size:28px;
+    .rouble {
+        margin-left:8px;
+        font-weigt:700;
+    }
+}
+.form-group {
+    .control-label {
+        font-size:16px;
     }
 }
 .dropdown-menu {
@@ -702,7 +738,7 @@ footer {
         border:0;
         .button-cart-add {
             float:none;
-            margin: 0 auto;
+            margin: 80px auto;
             display: block;
         }
         button {
@@ -756,7 +792,8 @@ footer {
         min-height: 80px;
         padding: 0 20px;
         h4 a {
-            font-size:12px;
+            font-size:16px;
+            font-weight:600;
             text-transform: uppercase;
             color: @colorDark;
         }
